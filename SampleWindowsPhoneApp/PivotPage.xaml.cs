@@ -1,5 +1,5 @@
-﻿using SampleWindowsPhoneApp.Common;
-using SampleWindowsPhoneApp.Data;
+﻿using VOHRadio.Common;
+using VOHRadio.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,7 +21,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
-namespace SampleWindowsPhoneApp
+namespace VOHRadio
 {
     public sealed partial class PivotPage : Page
     {
@@ -41,6 +41,7 @@ namespace SampleWindowsPhoneApp
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+
         }
 
         /// <summary>
@@ -164,5 +165,95 @@ namespace SampleWindowsPhoneApp
         }
 
         #endregion
+
+        #region Data List
+
+        #region Settings
+        public List<VOHSettings> lstSettingItems = new List<VOHSettings>() {
+            new VOHSettings {
+                Text = "Thay đổi màu sắc",
+                Icon = Symbol.Document
+            },
+            new VOHSettings {
+                Text = "Giới thiệu",
+                Icon = Symbol.ViewAll
+            },
+            new VOHSettings {
+                Text = "Đánh giá",
+                Icon = Symbol.SolidStar
+            },
+            new VOHSettings {
+                Text = "Chia sẻ",
+                Icon = Symbol.ReShare
+            },
+            new VOHSettings {
+                Text = "Góp ý",
+                Icon = Symbol.Comment
+            },
+            new VOHSettings {
+                Text = "Hướng dẫn sử dụng",
+                Icon = Symbol.Library
+            },
+            new VOHSettings {
+                Text = "Liên hệ hỗ trợ",
+                Icon = Symbol.CellPhone
+            }
+        };
+        #endregion
+
+        #region News
+        public List<VOHObject> lstNews;
+        #endregion
+
+        #region Audio
+        public List<VOHObject> lstAudio;
+        #endregion
+
+        #region Favourite
+        public List<VOHObject> lstFavourite;
+        #endregion
+
+        #region Video
+        public List<VOHObject> lstVideo;
+        #endregion
+
+        #region Comment
+        public List<VOHComment> lstComment;
+        private int _intCommentPage = 0;
+        #endregion
+
+        #region Schedule
+        public List<VOHObject> lstSchedule;
+        #endregion
+
+        #endregion
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            myIndeterminateProbar.Visibility = Visibility.Collapsed;
+
+            // Assign Resources
+            lsvSettings.ItemsSource = lstSettingItems;
+
+            lstNews = Helper.GetNewsCategories();
+            lsvNewsCat.ItemsSource = lstNews;
+
+            lstAudio = Helper.GetSoundCategories();
+            lsvAudioCat.ItemsSource = lstAudio;
+
+            lstVideo = Helper.GetVideoCategories();
+            lsvVideoCat.ItemsSource = lstVideo;
+
+            lstFavourite = new List<VOHObject>();
+            lsvFavourite.ItemsSource = lstFavourite;
+
+            _intCommentPage++;
+            lstComment = Helper.GetComment(_intCommentPage);
+            lsvComment.ItemsSource = lstComment;
+
+            lstSchedule = Helper.GetSchedules();
+            lvsSchedule.ItemsSource = lstSchedule;
+        }
     }
 }

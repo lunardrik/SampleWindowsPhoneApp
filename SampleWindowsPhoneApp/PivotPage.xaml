@@ -1,14 +1,14 @@
 ﻿<Page
-    x:Class="SampleWindowsPhoneApp.PivotPage"
+    x:Class="VOHRadio.PivotPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SampleWindowsPhoneApp"
+    xmlns:local="using:VOHRadio"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:data="using:SampleWindowsPhoneApp.Data"
+    xmlns:data="using:VOHRadio.Data"
     mc:Ignorable="d"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource DefaultRLayout}" Loaded="Page_Loaded">
     <Page.Transitions>
         <TransitionCollection>
             <NavigationThemeTransition>
@@ -32,30 +32,47 @@
                 <!--Double line list with text wrapping-->
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="3" />
                         <RowDefinition Height="6*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-
-                    <Image Source="Assets/TPHCM01.jpg" Stretch="Fill"/>
-                    <Grid Grid.Row="1" HorizontalAlignment="Center">
+                    <ProgressBar Grid.Row="0" x:Name="myIndeterminateProbar" IsIndeterminate="True"/>
+                    <Image Grid.Row="1" Grid.RowSpan="2" Source="Assets/TPHCM01.jpg" Stretch="UniformToFill" Margin="0" RenderTransformOrigin="0.5,0.5" NineGrid="0"/>
+                    <Grid Grid.Row="2" HorizontalAlignment="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <AppBarButton Grid.Column="0"  >
-                            <AppBarButton.Icon>
-                                <BitmapIcon UriSource="Assets/610KHz.png">
-                                    <BitmapIcon.Foreground>
-                                        <ImageBrush ImageSource="ms-appx:/Assets/610KHz.png" Stretch="UniformToFill"/>
-                                    </BitmapIcon.Foreground>
-                                </BitmapIcon>
-                            </AppBarButton.Icon>
+                        <AppBarButton  Grid.Column="0"  >
+                            <AppBarButton.Content>
+                                <ContentControl>
+                                    <Image Width="48" Height="48" Margin="-10,-10,0,0" Source="/Assets/AM610.png"/>
+                                </ContentControl>
+                            </AppBarButton.Content>
                         </AppBarButton>
-                        <AppBarButton Grid.Column="1" />
-                        <AppBarButton Grid.Column="2" />
-                        <AppBarButton Grid.Column="3" />
+                        <AppBarButton Grid.Column="1" >
+                            <AppBarButton.Content>
+                                <ContentControl>
+                                    <Image Width="48" Height="48" Margin="-10,-10,0,0" Source="/Assets/FM999.png"/>
+                                </ContentControl>
+                            </AppBarButton.Content>
+                        </AppBarButton>
+                        <AppBarButton Grid.Column="2" >
+                            <AppBarButton.Content>
+                                <ContentControl>
+                                    <Image Width="48" Height="48" Margin="-10,-10,0,0" Source="/Assets/FM956.png"/>
+                                </ContentControl>
+                            </AppBarButton.Content>
+                        </AppBarButton>
+                        <AppBarButton Grid.Column="3" >
+                            <AppBarButton.Content>
+                                <ContentControl>
+                                    <Image Width="48" Height="48" Margin="-10,-10,0,0" Source="/Assets/VIDEO.png"/>
+                                </ContentControl>
+                            </AppBarButton.Content>
+                        </AppBarButton>
                     </Grid>
                 </Grid>
             </PivotItem>
@@ -64,221 +81,210 @@
             <PivotItem
                 x:Uid="pviNews"
                 Margin="19,14.5,0,0"
-                Header="tin tức"
-                DataContext="{Binding SecondGroup}"
-                d:DataContext="{Binding Groups[1], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
+                Header="tin tức">
                 <!--Double line list no text wrapping-->
-                <ListView
-                    ItemsSource="{Binding Items}"
+                <ListView x:Name="lsvNewsCat"
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"
                     Loaded="SecondPivot_Loaded"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5">
+                            <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
+                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" />
                                 <TextBlock
                                     Text="{Binding Title}"
                                     Pivot.SlideInAnimationGroup="1"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemTextBlockStyle}"/>
-                                <TextBlock
-                                    Text="{Binding Description}"
-                                    Pivot.SlideInAnimationGroup="2"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                                    Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </PivotItem>
 
+            <!--Pivot audio item-->
             <PivotItem
-                x:Uid="pviSound"
+                x:Uid="pviAudio"
                 Margin="19,14.5,0,0"
-                Header="âm thanh"
-                DataContext="{Binding SecondGroup}"
-                d:DataContext="{Binding Groups[1], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
+                Header="âm thanh">
                 <!--Double line list no text wrapping-->
-                <ListView
-                    ItemsSource="{Binding Items}"
+                <ListView x:Name="lsvAudioCat"
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"
                     Loaded="SecondPivot_Loaded"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5">
+                            <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
+                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" />
                                 <TextBlock
                                     Text="{Binding Title}"
                                     Pivot.SlideInAnimationGroup="1"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemTextBlockStyle}"/>
-                                <TextBlock
-                                    Text="{Binding Description}"
-                                    Pivot.SlideInAnimationGroup="2"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                                    Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </PivotItem>
 
+            <!--Pivot video item-->
             <PivotItem
                 x:Uid="pviVideo"
                 Margin="19,14.5,0,0"
-                Header="video"
-                DataContext="{Binding SecondGroup}"
-                d:DataContext="{Binding Groups[1], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
+                Header="video">
                 <!--Double line list no text wrapping-->
-                <ListView
-                    ItemsSource="{Binding Items}"
+                <ListView Name="lsvVideoCat"
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"
                     Loaded="SecondPivot_Loaded"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5">
+                            <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
+                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" />
                                 <TextBlock
                                     Text="{Binding Title}"
                                     Pivot.SlideInAnimationGroup="1"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemTextBlockStyle}"/>
-                                <TextBlock
-                                    Text="{Binding Description}"
-                                    Pivot.SlideInAnimationGroup="2"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                                    Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </PivotItem>
 
+            <!--Pivot favourite item-->
             <PivotItem
                 x:Uid="pviFavourite"
                 Margin="19,14.5,0,0"
-                Header="yêu thích"
-                DataContext="{Binding SecondGroup}"
-                d:DataContext="{Binding Groups[1], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
+                Header="yêu thích">
                 <!--Double line list no text wrapping-->
-                <ListView
-                    ItemsSource="{Binding Items}"
+                <ListView Name="lsvFavourite"
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"
                     Loaded="SecondPivot_Loaded"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5">
+                            <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
+                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" />
                                 <TextBlock
                                     Text="{Binding Title}"
                                     Pivot.SlideInAnimationGroup="1"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemTextBlockStyle}"/>
-                                <TextBlock
-                                    Text="{Binding Description}"
-                                    Pivot.SlideInAnimationGroup="2"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                                    Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </PivotItem>
 
+            <!--Pivot comment item-->
             <PivotItem
                 x:Uid="pviComment"
                 Margin="19,14.5,0,0"
-                Header="cảm nhận"
-                DataContext="{Binding SecondGroup}"
-                d:DataContext="{Binding Groups[1], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
+                Header="cảm nhận">
                 <!--Double line list no text wrapping-->
-                <ListView
-                    ItemsSource="{Binding Items}"
-                    IsItemClickEnabled="True"
-                    ItemClick="ItemView_ItemClick"
+                <ListView Name="lsvComment"
+                    IsItemClickEnabled="False"
                     Loaded="SecondPivot_Loaded"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5">
+                            <Grid>
+                                <StackPanel Margin="0,0,0,9.5" Orientation="Vertical" 
+                                            Width="Auto">
                                 <TextBlock
-                                    Text="{Binding Title}"
+                                    Text="{Binding FullName}"
                                     Pivot.SlideInAnimationGroup="1"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     Style="{StaticResource ListViewItemTextBlockStyle}"/>
+
+                                <TextBlock Grid.Column="0"
+                                    Text="{Binding Email}" FontSize="10"
+                                    Pivot.SlideInAnimationGroup="1"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Style="{StaticResource ListViewItemTextBlockStyle}"/>
+
                                 <TextBlock
-                                    Text="{Binding Description}"
-                                    Pivot.SlideInAnimationGroup="2"
+                                    Text="{Binding Content}"
+                                    Pivot.SlideInAnimationGroup="2" TextWrapping="WrapWholeWords"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
-                            </StackPanel>
+                                
+                                <TextBlock Grid.Column="1" 
+                                    Text="{Binding PostDay}" FontSize="10"
+                                    Pivot.SlideInAnimationGroup="1"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Style="{StaticResource ListViewItemTextBlockStyle}"/>
+
+                                </StackPanel>
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </PivotItem>
 
+            <!--Pivot schedule item-->
             <PivotItem
                 x:Uid="pviSchedule"
                 Margin="19,14.5,0,0"
-                Header="lịch phát sóng"
-                DataContext="{Binding SecondGroup}"
-                d:DataContext="{Binding Groups[1], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
+                Header="lịch phát sóng">
                 <!--Double line list no text wrapping-->
-                <ListView
-                    ItemsSource="{Binding Items}"
+                <ListView x:Name="lvsSchedule"
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"
                     Loaded="SecondPivot_Loaded"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5">
-                                <TextBlock
-                                    Text="{Binding Title}"
-                                    Pivot.SlideInAnimationGroup="1"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemTextBlockStyle}"/>
-                                <TextBlock
-                                    Text="{Binding Description}"
-                                    Pivot.SlideInAnimationGroup="2"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                            <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
+                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" />
+                                <StackPanel Margin="10,0,0,0">
+                                    <TextBlock
+                                        Text="{Binding Title}"
+                                        Pivot.SlideInAnimationGroup="1"
+                                        CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                        Style="{StaticResource ListViewItemTextBlockStyle}"/>
+                                    <TextBlock
+                                        Text="{Binding Type}"
+                                        Pivot.SlideInAnimationGroup="2"
+                                        CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                        Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                                </StackPanel>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </PivotItem>
 
+            <!--Pivot setting item-->
             <PivotItem
                 x:Uid="pviSetting"
                 Margin="19,14.5,0,0"
-                Header="cài đặt"
-                DataContext="{Binding SecondGroup}"
-                d:DataContext="{Binding Groups[1], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}">
+                Header="cài đặt">
                 <!--Double line list no text wrapping-->
-                <ListView
-                    ItemsSource="{Binding Items}"
+                <ListView x:Name="lsvSettings"
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"
                     Loaded="SecondPivot_Loaded"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5">
+                            <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
+                                <SymbolIcon Height="40" Width="40" Symbol="{Binding Icon}" Margin="0,2,0,0" />
                                 <TextBlock
-                                    Text="{Binding Title}"
+                                    Text="{Binding Text}"
                                     Pivot.SlideInAnimationGroup="1"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemTextBlockStyle}"/>
-                                <TextBlock
-                                    Text="{Binding Description}"
+                                    Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
+                                <!--<TextBlock
+                                    Text="{Binding Text}"
                                     Pivot.SlideInAnimationGroup="2"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
-                                    Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
+                                    Style="{StaticResource ListViewItemContentTextBlockStyle}"/>-->
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -288,7 +294,7 @@
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar Style="{StaticResource DefaultRLayoutCommandBar}">
             <AppBarButton x:Uid="AddAppBarButton" x:Name="AddAppBarButton" Label="add" Icon="Add" Click="AddAppBarButton_Click" />
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="SecondaryButton1" x:Name="SecondaryButton1" Label="secondary command 1" />

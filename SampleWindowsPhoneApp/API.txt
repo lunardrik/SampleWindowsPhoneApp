@@ -1,0 +1,19 @@
+﻿http://www.voh.com.vn/WebService/GetTinVan
+http://www.voh.com.vn/WebService/GetAdv
+
+http://www.voh.com.vn/WebService/GetNewsCate
+http://www.voh.com.vn/WebService/GetNews?CateID=317&item=20&page=1
+
+http://www.voh.com.vn/WebService/SoundCate
+http://www.voh.com.vn/WebService/Sounds?CateID=386&item=20&page=1
+
+http://www.voh.com.vn/WebService/VideoCate
+http://www.voh.com.vn/WebService/Videos?CateID=368&item=20&page=1
+
+http://www.voh.com.vn/WebService/GetComment?item=20&page=1
+POST http://www.voh.com.vn/WebService/AddComment
+FORM: FullName, Email, Phone, Content
+
+http://www.voh.com.vn/WebService/LichPhatSong
+http://www.voh.com.vn/WebService/ChiTietLichPhatSong?LPSID=1
+

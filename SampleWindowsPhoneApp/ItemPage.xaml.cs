@@ -1,5 +1,5 @@
-﻿using SampleWindowsPhoneApp.Common;
-using SampleWindowsPhoneApp.Data;
+﻿using VOHRadio.Common;
+using VOHRadio.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +19,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
-namespace SampleWindowsPhoneApp
+namespace VOHRadio
 {
     /// <summary>
     /// A page that displays details for a single item within a group.

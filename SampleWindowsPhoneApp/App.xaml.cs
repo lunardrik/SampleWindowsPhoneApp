@@ -1,4 +1,4 @@
-﻿using SampleWindowsPhoneApp.Common;
+﻿using VOHRadio.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +19,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
-namespace SampleWindowsPhoneApp
+namespace VOHRadio
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
