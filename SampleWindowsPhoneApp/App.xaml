@@ -17,19 +17,19 @@
 
         <!-- blue template -->
         <Style x:Key="BlueLayout" TargetType="Page">
-            <Setter Property="Background" Value="Blue">
+            <Setter Property="Background" Value="DarkBlue">
             </Setter>
         </Style>
         <Style x:Key="BlueLayoutCommandBar" TargetType="CommandBar">
-            <Setter Property="Background" Value="DarkBlue">
+            <Setter Property="Background" Value="Black">
             </Setter>
         </Style>
 
         <!-- default template -->
-        <Style x:Key="DefaultRLayout" TargetType="Page" BasedOn="{StaticResource RedLayout}">
+        <Style x:Key="DefaultRLayout" TargetType="Page" BasedOn="{StaticResource BlueLayout}">
             
         </Style>
-        <Style x:Key="DefaultRLayoutCommandBar" TargetType="CommandBar" BasedOn="{StaticResource RedLayoutCommandBar}">
+        <Style x:Key="DefaultRLayoutCommandBar" TargetType="CommandBar" BasedOn="{StaticResource BlueLayoutCommandBar}">
             
         </Style>
     </Application.Resources>

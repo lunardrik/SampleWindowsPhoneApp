@@ -37,7 +37,8 @@ namespace VOHRadio.Common
                 {
                     ID = item.CateID,
                     Title = item.CateName,
-                    ImageURI = item.CateThumbnail
+                    ImageURI = item.CateThumbnail,
+                    Type = "NEWCAT"
                 });
             }
             return lstNewsCat;
@@ -49,7 +50,7 @@ namespace VOHRadio.Common
             string json = GetJsonData(string.Format(NEWS_DET_URL, id, ITEM_PER_PAGE, page));
             dynamic lstCat = JsonConvert.DeserializeObject<dynamic>(json);
 
-            foreach (dynamic item in lstCat.ListCate)
+            foreach (dynamic item in lstCat.ListNewMode)
             {
                 lstNews.Add(new VOHObject
                 {
@@ -57,7 +58,8 @@ namespace VOHRadio.Common
                     Title = item.Title,
                     SubTitle = item.CateName,
                     ImageURI = item.Thumbnail,
-                    URI = item.Url
+                    URI = item.Url,
+                    Type = "NEWDET"
                 });
             }
             return lstNews;
@@ -75,7 +77,8 @@ namespace VOHRadio.Common
                 {
                     ID = item.CateID,
                     Title = item.CateName,
-                    ImageURI = item.CateThumbnail
+                    ImageURI = item.CateThumbnail,
+                    Type = "SNDCAT"
                 });
             }
             return lstSoundCat;
@@ -87,14 +90,15 @@ namespace VOHRadio.Common
             string json = GetJsonData(string.Format(SUND_DET_URL, id, ITEM_PER_PAGE, page));
             dynamic lstCat = JsonConvert.DeserializeObject<dynamic>(json);
 
-            foreach (dynamic item in lstCat.ListCate)
+            foreach (dynamic item in lstCat.ListSound)
             {
                 lstSound.Add(new VOHObject
                 {
                     ID = item.SoundID,
                     Title = item.SoundName,
                     ImageURI = item.Thumbnail,
-                    URI = item.SoundUrl
+                    URI = item.SoundUrl,
+                    Type = "SNDDET"
                 });
             }
             return lstSound;
@@ -112,7 +116,8 @@ namespace VOHRadio.Common
                 {
                     ID = item.CateID,
                     Title = item.CateName,
-                    ImageURI = item.CateThumbnail
+                    ImageURI = item.CateThumbnail,
+                    Type = "VIDCAT"
                 });
             }
             return lstVideoCat;
@@ -124,14 +129,15 @@ namespace VOHRadio.Common
             string json = GetJsonData(string.Format(VIDE_DET_URL, id, ITEM_PER_PAGE, page));
             dynamic lstCat = JsonConvert.DeserializeObject<dynamic>(json);
 
-            foreach (dynamic item in lstCat.ListCate)
+            foreach (dynamic item in lstCat.ListVideo)
             {
                 lstVideo.Add(new VOHObject
                 {
                     ID = item.VideoID,
                     Title = item.VideoName,
                     ImageURI = item.VideoThumbnail,
-                    URI = item.VideoUrl
+                    URI = item.VideoUrl,
+                    Type = "VIDDET"
                 });
             }
             return lstVideo;
@@ -170,7 +176,8 @@ namespace VOHRadio.Common
                 {
                     ID = item.LPSID,
                     Title = item.LPSName,
-                    Type = item.LPSType
+                    SubTitle = item.LPSType,
+                    Type = "SCDCAT"
                 });
             }
             return lstSchedule;
@@ -182,14 +189,15 @@ namespace VOHRadio.Common
             string json = GetJsonData(string.Format(SCHD_DET_URL, id));
             dynamic lstCat = JsonConvert.DeserializeObject<dynamic>(json);
 
-            foreach (dynamic item in lstCat.ListCate)
+            foreach (dynamic item in lstCat.ListChiTietLPS)
             {
                 lstScheduleDetail.Add(new VOHObject
                 {
                     ID = item.ID,
                     Title = item.NoiDung,
                     SubTitle = item.ThoiGian,
-                    ImageURI = item.Thumbnail
+                    ImageURI = item.Thumbnail,
+                    Type = "SCDDET"
                 });
             }
             return lstScheduleDetail;

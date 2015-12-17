@@ -8,8 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding DefaultViewModel.Item, RelativeSource={RelativeSource Self}}"
-    d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}"
-    Style="{StaticResource DefaultRLayout}">
+    Style="{StaticResource DefaultRLayout}" Loaded="Page_Loaded">
     <Page.Transitions>
         <TransitionCollection>
             <NavigationThemeTransition>
@@ -42,7 +41,22 @@
                   to show details for the current item
         -->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-
+            <ListView x:Name="lsvDetail"
+                    IsItemClickEnabled="True"
+                    ContinuumNavigationTransitionInfo.ExitElementContainer="True" ItemClick="lsvDetail_ItemClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
+                            <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
+                            <TextBlock
+                                    Text="{Binding Title}"
+                                    Pivot.SlideInAnimationGroup="1"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </Grid>
 </Page>

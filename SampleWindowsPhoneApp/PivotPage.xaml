@@ -91,7 +91,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
-                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" />
+                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                                 <TextBlock
                                     Text="{Binding Title}"
                                     Pivot.SlideInAnimationGroup="1"
@@ -117,7 +117,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
-                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" />
+                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                                 <TextBlock
                                     Text="{Binding Title}"
                                     Pivot.SlideInAnimationGroup="1"
@@ -143,7 +143,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
-                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" />
+                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                                 <TextBlock
                                     Text="{Binding Title}"
                                     Pivot.SlideInAnimationGroup="1"
@@ -169,7 +169,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
-                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" />
+                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                                 <TextBlock
                                     Text="{Binding Title}"
                                     Pivot.SlideInAnimationGroup="1"
@@ -241,7 +241,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
-                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" />
+                                <!--<Image Height="40" Width="60" Source="{Binding ImageURIP}" />-->
                                 <StackPanel Margin="10,0,0,0">
                                     <TextBlock
                                         Text="{Binding Title}"
@@ -249,7 +249,7 @@
                                         CommonNavigationTransitionInfo.IsStaggerElement="True"
                                         Style="{StaticResource ListViewItemTextBlockStyle}"/>
                                     <TextBlock
-                                        Text="{Binding Type}"
+                                        Text="{Binding SubTitle}"
                                         Pivot.SlideInAnimationGroup="2"
                                         CommonNavigationTransitionInfo.IsStaggerElement="True"
                                         Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
