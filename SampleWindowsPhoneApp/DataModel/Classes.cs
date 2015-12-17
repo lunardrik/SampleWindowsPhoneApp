@@ -31,7 +31,7 @@ namespace VOHRadio.Data
                 if (_strImageUri != "" && _strImageUri != null)
                     ImageURIP = new Uri(value, UriKind.Absolute);
                 else
-                    ImageURIP = new Uri("ms-appx:///Assets/NoImage.png", UriKind.Absolute);
+                    ImageURIP = new Uri("ms-appx:///Assets/voh_logo.gif", UriKind.Absolute);
             }
         }
         public Uri ImageURIP { get; set; }

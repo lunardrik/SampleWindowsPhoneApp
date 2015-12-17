@@ -23,6 +23,7 @@ namespace VOHRadio.Common
         private const string COMM_POT_URL = "http://www.voh.com.vn/WebService/AddComment";
         private const string SCHD_CAT_URL = "http://www.voh.com.vn/WebService/LichPhatSong";
         private const string SCHD_DET_URL = "http://www.voh.com.vn/WebService/ChiTietLichPhatSong?LPSID={0}";
+        private const string RADI_GET_URL = "http://www.voh.com.vn/WebService/GetRadioOnline";
 
 
         public static List<VOHObject> GetNewsCategories()
@@ -201,6 +202,27 @@ namespace VOHRadio.Common
                 });
             }
             return lstScheduleDetail;
+        }
+
+        public static List<VOHObject> GetRadioList()
+        {
+            List<VOHObject> lstRadio = new List<VOHObject>();
+            string json = GetJsonData(RADI_GET_URL);
+            dynamic lstCat = JsonConvert.DeserializeObject<dynamic>(json);
+
+            foreach (dynamic item in lstCat.ListRadio)
+            {
+                lstRadio.Add(new VOHObject
+                {
+                    ID = item.RadioID,
+                    Title = item.RadioName,
+                    URI = item.RadioUrl,
+                    ImageURI = item.RadioThumbnail,
+                    SubTitle = item.RadioContent,
+                    Type = "RDOGET"
+                });
+            }
+            return lstRadio;
         }
 
         public static string GetJsonData(string url)

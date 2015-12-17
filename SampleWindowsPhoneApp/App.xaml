@@ -32,6 +32,14 @@
         <Style x:Key="DefaultRLayoutCommandBar" TargetType="CommandBar" BasedOn="{StaticResource BlueLayoutCommandBar}">
             
         </Style>
+
+        <Style x:Key="ListViewItemTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+            <Setter Property="FontFamily" Value="{ThemeResource PhoneFontFamilySemiLight}" />
+            <Setter Property="FontSize" Value="{ThemeResource TextStyleExtraLargePlusFontSize}" />
+            <Setter Property="TextWrapping" Value="NoWrap" />
+            <Setter Property="LineHeight" Value="33.5" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
     </Application.Resources>
 
 </Application>

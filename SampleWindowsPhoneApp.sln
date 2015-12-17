@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWindowsPhoneApp", "SampleWindowsPhoneApp\SampleWindowsPhoneApp.csproj", "{7E3AC53C-9971-427D-8B26-397A2093D299}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhoneSM", "PhoneSM", "{121B534E-5A39-4BF4-A6AC-FB622265909B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SM.Media.MediaPlayer.WP81", "E:\Temp\phonesm-1.5.3-beta\Libraries\SM.Media.MediaPlayer.WP81\SM.Media.MediaPlayer.WP81.csproj", "{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +37,23 @@ Global
 		{7E3AC53C-9971-427D-8B26-397A2093D299}.Release|x86.ActiveCfg = Release|x86
 		{7E3AC53C-9971-427D-8B26-397A2093D299}.Release|x86.Build.0 = Release|x86
 		{7E3AC53C-9971-427D-8B26-397A2093D299}.Release|x86.Deploy.0 = Release|x86
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Debug|ARM.Build.0 = Debug|Any CPU
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Debug|x86.Build.0 = Debug|Any CPU
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Release|ARM.ActiveCfg = Release|Any CPU
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Release|ARM.Build.0 = Release|Any CPU
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2} = {121B534E-5A39-4BF4-A6AC-FB622265909B}
 	EndGlobalSection
 EndGlobal

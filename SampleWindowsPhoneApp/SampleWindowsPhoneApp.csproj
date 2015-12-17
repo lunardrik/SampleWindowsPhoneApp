@@ -84,11 +84,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="MediaFramePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NewsFramePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PivotPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VideoFramePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,6 +115,9 @@
     <Compile Include="ItemPage.xaml.cs">
       <DependentUpon>ItemPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MediaFramePage.xaml.cs">
+      <DependentUpon>MediaFramePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NewsFramePage.xaml.cs">
       <DependentUpon>NewsFramePage.xaml</DependentUpon>
     </Compile>
@@ -114,6 +125,9 @@
       <DependentUpon>PivotPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VideoFramePage.xaml.cs">
+      <DependentUpon>VideoFramePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -123,6 +137,7 @@
   <ItemGroup>
     <Content Include="API.txt" />
     <Content Include="Assets\610KHz.png" />
+    <Content Include="Assets\MediaBG.jpg" />
     <Content Include="Assets\AM610.png" />
     <Content Include="Assets\FM956.png" />
     <Content Include="Assets\FM999.png" />
@@ -134,6 +149,7 @@
     <Content Include="Assets\StoreLogo.scale-240.png" />
     <Content Include="Assets\TPHCM01.jpg" />
     <Content Include="Assets\VIDEO.png" />
+    <Content Include="Assets\voh_logo.gif" />
     <Content Include="Assets\WideLogo.scale-240.png" />
     <Content Include="Common\ReadMe.txt" />
   </ItemGroup>
@@ -150,9 +166,22 @@
     </PRIResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="SM.Media">
+      <HintPath>DLLs\SM.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="SM.Media.Builder">
+      <HintPath>DLLs\SM.Media.Builder.dll</HintPath>
+    </Reference>
+    <Reference Include="SM.Media.Platform.WinRT">
+      <HintPath>DLLs\SM.Media.Platform.WinRT.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +191,12 @@
     <SDKReference Include="Microsoft.PlayerFramework.Xaml.WP81, Version=3.0.0.2">
       <Name>Microsoft Player Framework</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="E:\Temp\phonesm-1.5.3-beta\Libraries\SM.Media.MediaPlayer.WP81\SM.Media.MediaPlayer.WP81.csproj">
+      <Project>{0e64c570-7e84-45e2-a2ac-75ae3c529ff2}</Project>
+      <Name>SM.Media.MediaPlayer.WP81</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

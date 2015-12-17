@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:VOHRadio.Data"
+    xmlns:PlayerFramework="using:Microsoft.PlayerFramework"
+    xmlns:smmedia="using:SM.Media.MediaPlayer"
     mc:Ignorable="d"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     Style="{StaticResource DefaultRLayout}" Loaded="Page_Loaded">
@@ -20,46 +22,60 @@
     </Page.Transitions>
 
     <Grid>
+        <PlayerFramework:MediaPlayer Grid.Row="0" x:Name="pfwRadioPlayer" AutoPlay="True" AutoHide="False" Opacity="0">
+            <PlayerFramework:MediaPlayer.Plugins>
+                <smmedia:StreamingMediaPlugin />
+            </PlayerFramework:MediaPlayer.Plugins>
+        </PlayerFramework:MediaPlayer>
+
         <Pivot x:Uid="Pivot" Title="VOH Radio" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True">
             <!--Pivot radio item-->
-            <PivotItem
+            <PivotItem x:Name="pviRadio"
                 x:Uid="pviRadio"
                 Margin="19,14.5,0,0"
                 Header="VOH radio"
-                DataContext="{Binding FirstGroup}"
-                d:DataContext="{Binding Groups[0], Source={d:DesignData Source=/DataModel/SampleData.json, Type=data:SampleDataSource}}"
                 CommonNavigationTransitionInfo.IsStaggerElement="True">
                 <!--Double line list with text wrapping-->
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3" />
-                        <RowDefinition Height="6*" />
+                        <RowDefinition Height="0.0*" />
                         <RowDefinition Height="1*" />
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="0.2*" />
                     </Grid.RowDefinitions>
                     <ProgressBar Grid.Row="0" x:Name="myIndeterminateProbar" IsIndeterminate="True"/>
-                    <Image Grid.Row="1" Grid.RowSpan="2" Source="Assets/TPHCM01.jpg" Stretch="UniformToFill" Margin="0" RenderTransformOrigin="0.5,0.5" NineGrid="0"/>
-                    <Grid Grid.Row="2" HorizontalAlignment="Center">
+                    <Image x:Name="imgBackground" Grid.Row="1" Grid.RowSpan="5" Source="Assets/TPHCM01.jpg" Stretch="UniformToFill" Margin="0" RenderTransformOrigin="0.5,0.5" NineGrid="0"/>
+                    <TextBlock FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.Row="1" Foreground="#FF3CF529">VOH Radio</TextBlock>
+                    <TextBlock FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="2" Foreground="#FF3CF529">Đài Tiếng Nói Nhân Dân TP.HCM</TextBlock>
+                    <TextBlock x:Name="txbOnAirLabel" FontSize="8" Visibility="Collapsed" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="4" FontWeight="Bold" Foreground="#FF3CF529" Margin="10,0,0,0">Chương trình đang phát sóng:</TextBlock>
+                    <TextBlock x:Name="txbOnAirText" FontSize="8" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="5" FontWeight="Bold" Foreground="#FF3CF529" Margin="10,2,0,0">Đài Tiếng Nói Nhân Dân TP.HCM</TextBlock>
+                    <Grid Grid.Row="7" HorizontalAlignment="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <AppBarButton  Grid.Column="0"  >
+                        <AppBarButton  Grid.Column="0" Tag="1" Click="Radio_Click" >
                             <AppBarButton.Content>
                                 <ContentControl>
                                     <Image Width="48" Height="48" Margin="-10,-10,0,0" Source="/Assets/AM610.png"/>
                                 </ContentControl>
                             </AppBarButton.Content>
                         </AppBarButton>
-                        <AppBarButton Grid.Column="1" >
+                        <AppBarButton Grid.Column="1" Tag="2" Click="Radio_Click" >
                             <AppBarButton.Content>
                                 <ContentControl>
                                     <Image Width="48" Height="48" Margin="-10,-10,0,0" Source="/Assets/FM999.png"/>
                                 </ContentControl>
                             </AppBarButton.Content>
                         </AppBarButton>
-                        <AppBarButton Grid.Column="2" >
+                        <AppBarButton Grid.Column="2" Tag="3" Click="Radio_Click" >
                             <AppBarButton.Content>
                                 <ContentControl>
                                     <Image Width="48" Height="48" Margin="-10,-10,0,0" Source="/Assets/FM956.png"/>
@@ -268,8 +284,6 @@
                 <!--Double line list no text wrapping-->
                 <ListView x:Name="lsvSettings"
                     IsItemClickEnabled="True"
-                    ItemClick="ItemView_ItemClick"
-                    Loaded="SecondPivot_Loaded"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -292,8 +306,7 @@
             </PivotItem>
         </Pivot>
     </Grid>
-
-    <Page.BottomAppBar>
+    <!--<Page.BottomAppBar>
         <CommandBar Style="{StaticResource DefaultRLayoutCommandBar}">
             <AppBarButton x:Uid="AddAppBarButton" x:Name="AddAppBarButton" Label="add" Icon="Add" Click="AddAppBarButton_Click" />
             <CommandBar.SecondaryCommands>
@@ -301,5 +314,5 @@
                 <AppBarButton x:Uid="SecondaryButton2" x:Name="SecondaryButton2" Label="secondary command 2" />
             </CommandBar.SecondaryCommands>
         </CommandBar>
-    </Page.BottomAppBar>
+    </Page.BottomAppBar>-->
 </Page>
