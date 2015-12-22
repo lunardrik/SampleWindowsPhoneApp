@@ -80,23 +80,31 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Page Include="ItemPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MediaFramePage.xaml">
+    <Page Include="Pages\AboutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NewsFramePage.xaml">
+    <Page Include="Pages\ItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\MediaFramePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PivotPage.xaml">
+    <Page Include="Pages\NewsFramePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VideoFramePage.xaml">
+    <Page Include="Pages\PivotPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ThemeSettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\VideoFramePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,20 +120,26 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="DataModel\Classes.cs" />
     <Compile Include="DataModel\SampleDataSource.cs" />
-    <Compile Include="ItemPage.xaml.cs">
+    <Compile Include="Pages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ItemPage.xaml.cs">
       <DependentUpon>ItemPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MediaFramePage.xaml.cs">
+    <Compile Include="Pages\MediaFramePage.xaml.cs">
       <DependentUpon>MediaFramePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewsFramePage.xaml.cs">
+    <Compile Include="Pages\NewsFramePage.xaml.cs">
       <DependentUpon>NewsFramePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PivotPage.xaml.cs">
+    <Compile Include="Pages\PivotPage.xaml.cs">
       <DependentUpon>PivotPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ThemeSettingPage.xaml.cs">
+      <DependentUpon>ThemeSettingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VideoFramePage.xaml.cs">
+    <Compile Include="Pages\VideoFramePage.xaml.cs">
       <DependentUpon>VideoFramePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>

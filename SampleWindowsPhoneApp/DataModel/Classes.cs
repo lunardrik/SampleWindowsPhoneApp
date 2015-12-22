@@ -11,6 +11,12 @@ namespace VOHRadio.Data
     {
         public string Text { get; set; }
         public Symbol Icon { get; set; }
+        public async Func<Frame, Task> Action;
+    }
+
+    public class VOHFavCollection
+    {
+        List<VOHObject> List = new List<VOHObject>();
     }
 
     public class VOHObject

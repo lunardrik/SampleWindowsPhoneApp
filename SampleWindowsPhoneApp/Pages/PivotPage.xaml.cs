@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.ApplicationModel.Store;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -96,7 +97,7 @@ namespace VOHRadio
         /// </summary>
         private void AddAppBarButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         /// <summary>
@@ -167,15 +168,34 @@ namespace VOHRadio
         public List<VOHSettings> lstSettingItems = new List<VOHSettings>() {
             new VOHSettings {
                 Text = "Thay đổi màu sắc",
-                Icon = Symbol.Document
+                Icon = Symbol.Document,
+                Action = (Frame) => {
+                    if (!Frame.Navigate(typeof(ThemeSettingPage)))
+                    {
+                        return false;
+                    }
+                    return true;
+                }
             },
             new VOHSettings {
                 Text = "Giới thiệu",
-                Icon = Symbol.ViewAll
+                Icon = Symbol.ViewAll,
+                Action = (Frame) => {
+                    if (!Frame.Navigate(typeof(AboutPage)))
+                    {
+                        return false;
+                    }
+                    return true;
+                }
             },
             new VOHSettings {
                 Text = "Đánh giá",
-                Icon = Symbol.SolidStar
+                Icon = Symbol.SolidStar,
+                Action = (Frame) => {
+                    var uri = new Uri(string.Format("ms-windows-store:navigate?appid={0}", CurrentApp.AppId));
+                    await Windows.System.Launcher.LaunchUriAsync(uri);
+                    return true;
+                }
             },
             new VOHSettings {
                 Text = "Chia sẻ",
@@ -284,6 +304,16 @@ namespace VOHRadio
                 pfwRadioPlayer.Source = null;
                 pfwRadioPlayer.Source = new Uri(obj.URI, UriKind.Absolute);
                 pfwRadioPlayer.Play();
+            }
+        }
+
+        private void lsvSettings_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var setting = (VOHSettings)e.ClickedItem;
+
+            if (setting.Action != null && !setting.Action(Frame))
+            {
+                // Do-nothing
             }
         }
     }

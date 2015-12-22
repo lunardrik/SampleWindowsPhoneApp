@@ -32,7 +32,7 @@
             <!--Pivot radio item-->
             <PivotItem x:Name="pviRadio"
                 x:Uid="pviRadio"
-                Margin="19,14.5,0,0"
+                Margin="0,14.5,0,0"
                 Header="VOH radio"
                 CommonNavigationTransitionInfo.IsStaggerElement="True">
                 <!--Double line list with text wrapping-->
@@ -49,7 +49,7 @@
                         <RowDefinition Height="0.2*" />
                     </Grid.RowDefinitions>
                     <ProgressBar Grid.Row="0" x:Name="myIndeterminateProbar" IsIndeterminate="True"/>
-                    <Image x:Name="imgBackground" Grid.Row="1" Grid.RowSpan="5" Source="Assets/TPHCM01.jpg" Stretch="UniformToFill" Margin="0" RenderTransformOrigin="0.5,0.5" NineGrid="0"/>
+                    <Image x:Name="imgBackground" Grid.Row="1" Grid.RowSpan="5" Source="ms-appx:///Assets/TPHCM01.jpg" Stretch="UniformToFill"/>
                     <TextBlock FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.Row="1" Foreground="#FF3CF529">VOH Radio</TextBlock>
                     <TextBlock FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="2" Foreground="#FF3CF529">Đài Tiếng Nói Nhân Dân TP.HCM</TextBlock>
                     <TextBlock x:Name="txbOnAirLabel" FontSize="8" Visibility="Collapsed" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="4" FontWeight="Bold" Foreground="#FF3CF529" Margin="10,0,0,0">Chương trình đang phát sóng:</TextBlock>
@@ -284,7 +284,7 @@
                 <!--Double line list no text wrapping-->
                 <ListView x:Name="lsvSettings"
                     IsItemClickEnabled="True"
-                    ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                    ContinuumNavigationTransitionInfo.ExitElementContainer="True" ItemClick="lsvSettings_ItemClick">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
