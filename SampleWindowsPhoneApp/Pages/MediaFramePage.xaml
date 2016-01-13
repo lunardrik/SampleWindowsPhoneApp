@@ -15,10 +15,10 @@
             <RowDefinition Height="4*" />
             <RowDefinition Height="6*" />
         </Grid.RowDefinitions>
-        <PlayerFramework:MediaPlayer Grid.Row="0" x:Name="pfwPlayer" AutoHide="False" AudioCategory="ForegroundOnlyMedia"
-            IsAudioSelectionEnabled="True" IsAudioSelectionVisible="True">
+        <PlayerFramework:MediaPlayer Grid.Row="0" x:Name="pfwPlayer" AutoHide="False" AudioCategory="Other"
+            IsAudioSelectionEnabled="True" IsAudioSelectionVisible="True" IsTimelineVisible="True" IsTimeRemainingVisible="True" IsStopVisible="True">
             <PlayerFramework:MediaPlayer.Background>
-                <ImageBrush ImageSource="Assets/MediaBG.jpg" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="ms-appx:///Assets/MediaBG.jpg" Stretch="UniformToFill"/>
             </PlayerFramework:MediaPlayer.Background>
         </PlayerFramework:MediaPlayer>
         <ListView x:Name="lsvPlaylist" Grid.Row="1"
@@ -30,7 +30,7 @@
                         <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                         <TextBlock
                                     Text="{Binding Title}"
-                                    Pivot.SlideInAnimationGroup="1"
+                                    Pivot.SlideInAnimationGroup="1" VerticalAlignment="Center"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True" TextWrapping="WrapWholeWords"
                                     Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
                     </StackPanel>

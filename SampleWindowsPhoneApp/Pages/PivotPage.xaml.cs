@@ -20,6 +20,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.ApplicationModel.Store;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.ApplicationModel.Email;
+using Windows.UI.Popups;
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -153,11 +156,20 @@ namespace VOHRadio
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+            DataTransferManager dtManager = DataTransferManager.GetForCurrentView();
+            dtManager.DataRequested += dtManager_DataRequested;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedFrom(e);
+        }
+
+        private async void dtManager_DataRequested(DataTransferManager sender, DataRequestedEventArgs e)
+        {
+            e.Request.Data.Properties.Title = "VOH Radio";
+            e.Request.Data.Properties.Description = "Voice of Ho Chi Minh city people radio";
+            e.Request.Data.SetWebLink(new Uri(string.Format("ms-windows-store:navigate?appid={0}", CurrentApp.AppId)));
         }
 
         #endregion
@@ -169,12 +181,14 @@ namespace VOHRadio
             new VOHSettings {
                 Text = "Thay đổi màu sắc",
                 Icon = Symbol.Document,
-                Action = (Frame) => {
-                    if (!Frame.Navigate(typeof(ThemeSettingPage)))
-                    {
-                        return false;
-                    }
-                    return true;
+                AsyncAction = async(Frame) => {
+                    //if (!Frame.Navigate(typeof(ThemeSettingPage)))
+                    //{
+                    //    return false;
+                    //}
+                    MessageDialog msgbox = new MessageDialog("Comming Soon...");
+                    await msgbox.ShowAsync();
+                    //return true;
                 }
             },
             new VOHSettings {
@@ -191,19 +205,41 @@ namespace VOHRadio
             new VOHSettings {
                 Text = "Đánh giá",
                 Icon = Symbol.SolidStar,
-                Action = (Frame) => {
+                AsyncAction = async(Frame) => {
                     var uri = new Uri(string.Format("ms-windows-store:navigate?appid={0}", CurrentApp.AppId));
                     await Windows.System.Launcher.LaunchUriAsync(uri);
-                    return true;
                 }
             },
             new VOHSettings {
                 Text = "Chia sẻ",
-                Icon = Symbol.ReShare
+                Icon = Symbol.ReShare,
+                Action = (Frame) => {
+                    Windows.ApplicationModel.DataTransfer.DataTransferManager.ShowShareUI();
+                    return true;
+                }
             },
             new VOHSettings {
                 Text = "Góp ý",
-                Icon = Symbol.Comment
+                Icon = Symbol.Comment,
+                AsyncAction = async(Frame) => {
+                    EmailRecipient sendTo = new EmailRecipient()
+                    {
+                        Address = "vohradio@gmail.com"
+                    };
+
+                    //generate mail object
+                    EmailMessage mail = new EmailMessage();
+                    mail.Subject = "Góp ý ứng dụng VOH Radio (Windows Phone)";
+
+
+                    //add recipients to the mail object
+                    mail.To.Add(sendTo);
+                    //mail.Bcc.Add(sendTo);
+                    //mail.CC.Add(sendTo);
+
+                    //open the share contract with Mail only:
+                    await EmailManager.ShowComposeNewEmailAsync(mail);
+                }
             },
             new VOHSettings {
                 Text = "Hướng dẫn sử dụng",
@@ -211,7 +247,14 @@ namespace VOHRadio
             },
             new VOHSettings {
                 Text = "Liên hệ hỗ trợ",
-                Icon = Symbol.CellPhone
+                Icon = Symbol.CellPhone,
+                Action = (Frame) => {
+                    if (!Frame.Navigate(typeof(ContactPage)))
+                    {
+                        return false;
+                    }
+                    return true;
+                }
             }
         };
         #endregion
@@ -290,11 +333,15 @@ namespace VOHRadio
 
             if (obj != null)
             {
+                pfwRadioPlayer.Opacity = 0;
                 bitmapImage.UriSource = obj.ImageURIP;
                 imgBackground.Source = bitmapImage;
 
                 txbOnAirLabel.Visibility = Visibility.Visible;
                 txbOnAirText.Visibility = Visibility.Visible;
+
+                txbVOHNameEN.Visibility = Visibility.Visible;
+                txbVOHNameVN.Visibility = Visibility.Visible;
 
                 txbOnAirText.Text = obj.SubTitle;
 
@@ -303,6 +350,22 @@ namespace VOHRadio
                 pfwRadioPlayer.Stop();
                 pfwRadioPlayer.Source = null;
                 pfwRadioPlayer.Source = new Uri(obj.URI, UriKind.Absolute);
+                pfwRadioPlayer.Play();
+            } else
+            {
+                pfwRadioPlayer.Opacity = 100;
+
+                txbOnAirLabel.Visibility = Visibility.Collapsed;
+                txbOnAirText.Visibility = Visibility.Collapsed;
+
+                txbVOHNameEN.Visibility = Visibility.Collapsed;
+                txbVOHNameVN.Visibility = Visibility.Collapsed;
+
+                pviRadio.Header = "VOH Radio";
+
+                pfwRadioPlayer.Stop();
+                pfwRadioPlayer.Source = null;
+                pfwRadioPlayer.Source = new Uri("http://221.132.38.110:1935/live/channel4/playlist.m3u8", UriKind.Absolute);
                 pfwRadioPlayer.Play();
             }
         }
@@ -314,6 +377,10 @@ namespace VOHRadio
             if (setting.Action != null && !setting.Action(Frame))
             {
                 // Do-nothing
+            }
+            if (setting.Action == null && setting.AsyncAction != null)
+            {
+                setting.AsyncAction(Frame);
             }
         }
     }

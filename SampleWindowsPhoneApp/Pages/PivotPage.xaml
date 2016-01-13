@@ -22,12 +22,6 @@
     </Page.Transitions>
 
     <Grid>
-        <PlayerFramework:MediaPlayer Grid.Row="0" x:Name="pfwRadioPlayer" AutoPlay="True" AutoHide="False" Opacity="0">
-            <PlayerFramework:MediaPlayer.Plugins>
-                <smmedia:StreamingMediaPlugin />
-            </PlayerFramework:MediaPlayer.Plugins>
-        </PlayerFramework:MediaPlayer>
-
         <Pivot x:Uid="Pivot" Title="VOH Radio" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True">
             <!--Pivot radio item-->
             <PivotItem x:Name="pviRadio"
@@ -50,8 +44,13 @@
                     </Grid.RowDefinitions>
                     <ProgressBar Grid.Row="0" x:Name="myIndeterminateProbar" IsIndeterminate="True"/>
                     <Image x:Name="imgBackground" Grid.Row="1" Grid.RowSpan="5" Source="ms-appx:///Assets/TPHCM01.jpg" Stretch="UniformToFill"/>
-                    <TextBlock FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.Row="1" Foreground="#FF3CF529">VOH Radio</TextBlock>
-                    <TextBlock FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="2" Foreground="#FF3CF529">Đài Tiếng Nói Nhân Dân TP.HCM</TextBlock>
+                    <PlayerFramework:MediaPlayer Grid.Row="1" Grid.RowSpan="5" x:Name="pfwRadioPlayer" AutoPlay="True" AutoHide="False" Opacity="0">
+                        <PlayerFramework:MediaPlayer.Plugins>
+                            <smmedia:StreamingMediaPlugin />
+                        </PlayerFramework:MediaPlayer.Plugins>
+                    </PlayerFramework:MediaPlayer>
+                    <TextBlock x:Name="txbVOHNameEN" FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.Row="1" Foreground="#FF3CF529">VOH Radio</TextBlock>
+                    <TextBlock x:Name="txbVOHNameVN" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="2" Foreground="#FF3CF529">Đài Tiếng Nói Nhân Dân TP.HCM</TextBlock>
                     <TextBlock x:Name="txbOnAirLabel" FontSize="8" Visibility="Collapsed" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="4" FontWeight="Bold" Foreground="#FF3CF529" Margin="10,0,0,0">Chương trình đang phát sóng:</TextBlock>
                     <TextBlock x:Name="txbOnAirText" FontSize="8" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="5" FontWeight="Bold" Foreground="#FF3CF529" Margin="10,2,0,0">Đài Tiếng Nói Nhân Dân TP.HCM</TextBlock>
                     <Grid Grid.Row="7" HorizontalAlignment="Center">
@@ -82,7 +81,7 @@
                                 </ContentControl>
                             </AppBarButton.Content>
                         </AppBarButton>
-                        <AppBarButton Grid.Column="3" >
+                        <AppBarButton Grid.Column="3" Tag="4" Click="Radio_Click" >
                             <AppBarButton.Content>
                                 <ContentControl>
                                     <Image Width="48" Height="48" Margin="-10,-10,0,0" Source="/Assets/VIDEO.png"/>
@@ -110,8 +109,8 @@
                                 <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                                 <TextBlock
                                     Text="{Binding Title}"
-                                    Pivot.SlideInAnimationGroup="1"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Pivot.SlideInAnimationGroup="1" VerticalAlignment="Center"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" TextWrapping="Wrap"
                                     Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
                             </StackPanel>
                         </DataTemplate>
@@ -136,8 +135,8 @@
                                 <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                                 <TextBlock
                                     Text="{Binding Title}"
-                                    Pivot.SlideInAnimationGroup="1"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Pivot.SlideInAnimationGroup="1" VerticalAlignment="Center"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" TextWrapping="Wrap"
                                     Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
                             </StackPanel>
                         </DataTemplate>
@@ -162,8 +161,8 @@
                                 <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                                 <TextBlock
                                     Text="{Binding Title}"
-                                    Pivot.SlideInAnimationGroup="1"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Pivot.SlideInAnimationGroup="1" VerticalAlignment="Center"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" TextWrapping="Wrap"
                                     Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
                             </StackPanel>
                         </DataTemplate>
@@ -188,8 +187,8 @@
                                 <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                                 <TextBlock
                                     Text="{Binding Title}"
-                                    Pivot.SlideInAnimationGroup="1"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Pivot.SlideInAnimationGroup="1" VerticalAlignment="Center"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" TextWrapping="Wrap"
                                     Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
                             </StackPanel>
                         </DataTemplate>
@@ -261,12 +260,12 @@
                                 <StackPanel Margin="10,0,0,0">
                                     <TextBlock
                                         Text="{Binding Title}"
-                                        Pivot.SlideInAnimationGroup="1"
+                                        Pivot.SlideInAnimationGroup="1" TextWrapping="Wrap"
                                         CommonNavigationTransitionInfo.IsStaggerElement="True"
                                         Style="{StaticResource ListViewItemTextBlockStyle}"/>
                                     <TextBlock
                                         Text="{Binding SubTitle}"
-                                        Pivot.SlideInAnimationGroup="2"
+                                        Pivot.SlideInAnimationGroup="2" TextWrapping="Wrap"
                                         CommonNavigationTransitionInfo.IsStaggerElement="True"
                                         Style="{StaticResource ListViewItemContentTextBlockStyle}"/>
                                 </StackPanel>
@@ -291,7 +290,7 @@
                                 <SymbolIcon Height="40" Width="40" Symbol="{Binding Icon}" Margin="0,2,0,0" />
                                 <TextBlock
                                     Text="{Binding Text}"
-                                    Pivot.SlideInAnimationGroup="1"
+                                    Pivot.SlideInAnimationGroup="1" VerticalAlignment="Center"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
                                 <!--<TextBlock

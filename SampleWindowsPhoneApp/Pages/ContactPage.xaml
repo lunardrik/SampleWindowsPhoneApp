@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="VOHRadio.ContactPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VOHRadio"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="VOH Radio" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Liên hệ" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <ScrollViewer Grid.Row="1">
+            <Grid x:Name="ContentRoot" Margin="19,9.5,19,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="15*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="ms-appx:///Assets/Square71x71Logo.png" />
+                <TextBlock Grid.Row="2" FontWeight="Bold" HorizontalAlignment="Center" FontSize="36">VOH Radio</TextBlock>
+                <TextBlock Name="lblVersion" Grid.Row="3" FontSize="14" HorizontalAlignment="Center">Phiên bản: {0}</TextBlock>
+                <TextBlock Grid.Row="5" FontSize="14" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">
+                <Run>Chương trình nghe các kênh radio miễn phí, mọi nơi, mọi lúc, chỉ cần thiết bị của bạn kết nối Internet.</Run>
+                <LineBreak/>
+                <LineBreak/>
+                <Run>Mọi ý kiến xin liên hệ:</Run><LineBreak />
+                <Run FontWeight="Bold" xml:space="preserve">Điện thoại: </Run><Run>38225933 - 38225934 - 39104379</Run><LineBreak />
+                <Run FontWeight="Bold" xml:space="preserve">Email: </Run><Run>vohc1@vnn.vn hoặc radiohcm@hcm.vnn.vn</Run><LineBreak />
+                <LineBreak />
+                <Run>Đây là sản phẩm của Đài Tiếng nói Nhân dân TP. Hồ Chí Minh</Run><LineBreak />
+                <LineBreak />
+                <Run xml:space="preserve">Nhà phát triển: </Run><Run FontWeight="Bold">QuanLM</Run>
+                </TextBlock>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+        
+</Page>

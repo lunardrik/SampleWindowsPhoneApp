@@ -46,14 +46,21 @@
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True" ItemClick="lsvDetail_ItemClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
-                            <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
-                            <TextBlock
+                        <Border BorderBrush="White" BorderThickness="0 0 0 1" Width="{Binding ElementName=lsvDetail, Path=ActualWidth}" >
+                            <Grid Margin="0,0,0,9.5" MinHeight="60">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="1"
                                     Text="{Binding Title}"
-                                    Pivot.SlideInAnimationGroup="1"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                    Pivot.SlideInAnimationGroup="1" VerticalAlignment="Center"
+                                    CommonNavigationTransitionInfo.IsStaggerElement="True" TextWrapping="WrapWholeWords"
                                     Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
-                        </StackPanel>
+
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

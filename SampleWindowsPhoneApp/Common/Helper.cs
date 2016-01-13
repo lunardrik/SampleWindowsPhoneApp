@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using VOHRadio.Data;
+using Windows.UI.Xaml.Data;
 
 namespace VOHRadio.Common
 {
@@ -240,6 +241,28 @@ namespace VOHRadio.Common
                 var stringTask = await client.GetStringAsync(uri).ConfigureAwait(continueOnCapturedContext: false);
                 return stringTask;
             }
+        }
+    }
+    public class PageHeightConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            switch ((string)parameter)
+            {
+                case "HeroImage":
+                    return ((((double)value) * 2) / 3);
+                case "TitleFontSize":
+                    return (int)((double)value / 40);
+                case "BodyFontSize":
+                    return (int)((double)value / 60);
+                default:
+                    return 0;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
         }
     }
 }

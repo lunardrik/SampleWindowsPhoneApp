@@ -11,7 +11,8 @@ namespace VOHRadio.Data
     {
         public string Text { get; set; }
         public Symbol Icon { get; set; }
-        public async Func<Frame, Task> Action;
+        public Func<Frame, bool> Action;
+        public Func<Frame, Task> AsyncAction;
     }
 
     public class VOHFavCollection

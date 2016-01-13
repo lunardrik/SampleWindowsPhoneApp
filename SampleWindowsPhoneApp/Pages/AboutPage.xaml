@@ -23,13 +23,96 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="page title" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="VOH Radio" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Giới thiệu" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+        <ScrollViewer Grid.Row="1">
+            <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+                <StackPanel Orientation="Vertical">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3.5*" />
+                            <ColumnDefinition Width="6.5*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" TextWrapping="Wrap">Đài Tiếng nói Nhân dân TP. Hồ Chí Minh</TextBlock>
+                        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" FontSize="16" TextWrapping="Wrap">(The voice of Ho Chi Minh city people)</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" FontSize="16" TextWrapping="Wrap" Padding="0,10">Phát trên ba làn sóng AM610 KHz - FM99.9 MHz - FM95.6 MHz</TextBlock>
 
-        </Grid>
+                        <TextBlock Grid.Row="3" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Cơ quan chủ quản</TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="14" TextWrapping="Wrap">Ủy ban Nhân dân thành phố Hồ Chí Minh</TextBlock>
+
+                        <TextBlock Grid.Row="4" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Giấy phép</TextBlock>
+                        <TextBlock Grid.Row="4" Grid.Column="1" FontSize="14" TextWrapping="Wrap">41/GP-BVHTT ngày 29/01/2003 của Bộ Văn Hóa Thông Tin</TextBlock>
+
+                        <TextBlock Grid.Row="5" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">GĐ - Tổng Biên Tập</TextBlock>
+                        <TextBlock Grid.Row="5" Grid.Column="1" FontSize="14" TextWrapping="Wrap">Lê Công Đồng</TextBlock>
+
+                        <TextBlock Grid.Row="6" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Phó Giám Đốc</TextBlock>
+                        <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Vertical">
+                            <TextBlock FontSize="14" TextWrapping="Wrap">Nguyễn Trọng Trí</TextBlock>
+                            <TextBlock FontSize="14" TextWrapping="Wrap">Vương Quyền</TextBlock>
+                            <TextBlock FontSize="14" TextWrapping="Wrap">Nguyễn Nam Tuấn</TextBlock>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="7" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Địa chỉ</TextBlock>
+                        <TextBlock Grid.Row="7" Grid.Column="1" FontSize="14" TextWrapping="Wrap">03 Nguyễn Đình Chiểu, P. Đa Kao, Q.1, TP. Hồ Chí Minh</TextBlock>
+
+                        <TextBlock Grid.Row="8" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Điện thoại</TextBlock>
+                        <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Vertical">
+                            <TextBlock FontSize="14" TextWrapping="Wrap">38225933</TextBlock>
+                            <TextBlock FontSize="14" TextWrapping="Wrap">38225934</TextBlock>
+                            <TextBlock FontSize="14" TextWrapping="Wrap">39104379</TextBlock>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="9" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Fax</TextBlock>
+                        <TextBlock Grid.Row="9" Grid.Column="1" FontSize="14" TextWrapping="Wrap">38298743</TextBlock>
+
+                        <TextBlock Grid.Row="10" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Email</TextBlock>
+                        <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Vertical">
+                            <TextBlock FontSize="14" TextWrapping="Wrap">vohc1@vnn.vn</TextBlock>
+                            <TextBlock FontSize="14" TextWrapping="Wrap">radiohcm@hcm.vnn.vn</TextBlock>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="11" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="19" TextWrapping="Wrap" Padding="0,10">Trung tâm Quảng cáo và Dịch vụ phát thanh</TextBlock>
+
+                        <TextBlock Grid.Row="12" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Giám đốc</TextBlock>
+                        <TextBlock Grid.Row="12" Grid.Column="1" FontSize="14" TextWrapping="Wrap">Nguyễn Công Vinh</TextBlock>
+
+                        <TextBlock Grid.Row="13" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Địa chỉ</TextBlock>
+                        <TextBlock Grid.Row="13" Grid.Column="1" FontSize="14" TextWrapping="Wrap">03 Nguyễn Đình Chiểu, P. Đa Kao, Q.1, TP. Hồ Chí Minh</TextBlock>
+
+                        <TextBlock Grid.Row="14" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Điện thoại</TextBlock>
+                        <TextBlock Grid.Row="14" Grid.Column="1" FontSize="14" TextWrapping="Wrap">38293262</TextBlock>
+
+                        <TextBlock Grid.Row="15" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Fax</TextBlock>
+                        <TextBlock Grid.Row="15" Grid.Column="1" FontSize="14" TextWrapping="Wrap">38298743</TextBlock>
+
+                        <TextBlock Grid.Row="16" Grid.Column="0" FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Email</TextBlock>
+                        <TextBlock Grid.Row="16" Grid.Column="1" FontSize="14" TextWrapping="Wrap" Padding="0,0,0,20">info@vohad.com.vn</TextBlock>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>
