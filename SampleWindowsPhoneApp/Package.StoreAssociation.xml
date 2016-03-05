@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StoreAssociation xmlns="http://schemas.microsoft.com/appx/2010/storeassociation">
   <Publisher>CN=4755D611-E65E-44F0-8581-6CB749B19023</Publisher>
-  <PublisherDisplayName>Đài Tiếng Nói Nhân Dân TP.HCM - VOH</PublisherDisplayName>
+  <PublisherDisplayName>Đài Tiếng Nói Nhân Dân Thành Phố Hồ Chí Minh</PublisherDisplayName>
   <GeneratePackageHash>http://www.w3.org/2001/04/xmlenc#sha256</GeneratePackageHash>
   <SupportedLocales>
     <Language Code="af" InMinimumRequirementSet="true" />
