@@ -8,6 +8,7 @@
     xmlns:data="using:VOHRadio.Data"
     xmlns:PlayerFramework="using:Microsoft.PlayerFramework"
     xmlns:smmedia="using:SM.Media.MediaPlayer"
+    xmlns:common="using:VOHRadio.Common"
     mc:Ignorable="d"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     Style="{StaticResource DefaultRLayout}" Loaded="Page_Loaded">
@@ -20,6 +21,9 @@
             </NavigationThemeTransition>
         </TransitionCollection>
     </Page.Transitions>
+    <Page.Resources>
+        <common:ScaleConverter x:Key="ScaleConverter"></common:ScaleConverter>
+    </Page.Resources>
 
     <Grid>
         <Pivot x:Uid="Pivot" Title="VOH Radio" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True">
@@ -128,17 +132,31 @@
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"
                     Loaded="SecondPivot_Loaded"
-                    ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                    ContinuumNavigationTransitionInfo.ExitElementContainer="True" FontSize="18.667">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
-                                <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
+                            <!--<StackPanel Margin="0,0,0,9.5" Orientation="Horizontal" HorizontalAlignment="Stretch">-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="120" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                                 <TextBlock
-                                    Text="{Binding Title}"
-                                    Pivot.SlideInAnimationGroup="1" VerticalAlignment="Center"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True" TextWrapping="Wrap"
-                                    Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
-                            </StackPanel>
+                                Grid.Column="1"
+                                Text="{Binding Title}"
+                                Pivot.SlideInAnimationGroup="1" VerticalAlignment="Center"
+                                CommonNavigationTransitionInfo.IsStaggerElement="True" TextWrapping="Wrap"
+                                Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
+                                <Button Grid.Column="2"  BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Right" Content="&#xE0A5;" FontFamily="Segoe UI Symbol" />
+                            </Grid>
+                            <!--</StackPanel>-->
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -155,16 +173,28 @@
                     ItemClick="ItemView_ItemClick"
                     Loaded="SecondPivot_Loaded"
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="120" />
+                                </Grid.ColumnDefinitions>
                                 <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                                 <TextBlock
+                                    Grid.Column="1"
                                     Text="{Binding Title}"
                                     Pivot.SlideInAnimationGroup="1" VerticalAlignment="Center"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True" TextWrapping="Wrap"
                                     Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
-                            </StackPanel>
+                                <Button Grid.Column="2"  BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Right" Content="&#xE0A5;" FontFamily="Segoe UI Symbol" />
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -183,14 +213,21 @@
                     ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0,0,0,9.5" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="120" />
+                                </Grid.ColumnDefinitions>
                                 <Image Height="40" Width="60" Source="{Binding ImageURIP}" Stretch="Fill" />
                                 <TextBlock
+                                    Grid.Column="1"
                                     Text="{Binding Title}"
                                     Pivot.SlideInAnimationGroup="1" VerticalAlignment="Center"
                                     CommonNavigationTransitionInfo.IsStaggerElement="True" TextWrapping="Wrap"
-                                    Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0"/>
-                            </StackPanel>
+                                    Style="{StaticResource ListViewItemTextBlockStyle}" Padding="10,0,0,0" FontFamily="Global User Interface"/>
+                                <Button Grid.Column="2" Foreground="Red" BorderThickness="0" Width="40" Height="40" HorizontalAlignment="Right" Content="&#xE0A5;" FontFamily="Global User Interface" />
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

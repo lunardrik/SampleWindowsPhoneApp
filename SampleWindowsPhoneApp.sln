@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VOHRadio", "SampleWindowsPh
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhoneSM", "PhoneSM", "{121B534E-5A39-4BF4-A6AC-FB622265909B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SM.Media.MediaPlayer.WP81", "D:\Temp\phonesm-1.5.3-beta\Libraries\SM.Media.MediaPlayer.WP81\SM.Media.MediaPlayer.WP81.csproj", "{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SM.Media.MediaPlayer.WP81", "E:\Temp\phonesm-1.5.3-beta\Libraries\SM.Media.MediaPlayer.WP81\SM.Media.MediaPlayer.WP81.csproj", "{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundAudio.Sample.WP81", "E:\Temp\phonesm-1.5.3-beta\App\WinRT\BackgroundAudio.Sample.WP81\BackgroundAudio.Sample.WP81.csproj", "{E3BF6762-FEB6-4462-9667-92F96C5709B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,24 @@ Global
 		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Release|ARM.Build.0 = Release|Any CPU
 		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Release|x86.ActiveCfg = Release|Any CPU
 		{0E64C570-7E84-45E2-A2AC-75AE3C529FF2}.Release|x86.Build.0 = Release|Any CPU
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Debug|ARM.Build.0 = Debug|ARM
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Debug|ARM.Deploy.0 = Debug|ARM
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Debug|x86.ActiveCfg = Debug|x86
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Debug|x86.Build.0 = Debug|x86
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Debug|x86.Deploy.0 = Debug|x86
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Release|ARM.ActiveCfg = Release|ARM
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Release|ARM.Build.0 = Release|ARM
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Release|ARM.Deploy.0 = Release|ARM
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Release|x86.ActiveCfg = Release|x86
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Release|x86.Build.0 = Release|x86
+		{E3BF6762-FEB6-4462-9667-92F96C5709B7}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

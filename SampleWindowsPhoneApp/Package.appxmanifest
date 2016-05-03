@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="iTingNiNhnDnTP.HCM-VOH.RadioVOH" Publisher="CN=4755D611-E65E-44F0-8581-6CB749B19023" Version="1.1.2202.5" />
+  <Identity Name="iTingNiNhnDnTP.HCM-VOH.RadioVOH" Publisher="CN=4755D611-E65E-44F0-8581-6CB749B19023" Version="1.1.2202.6" />
   <mp:PhoneIdentity PhoneProductId="6d8e43c3-7c43-4e4d-95df-edfb092b96ab" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Radio VOH</DisplayName>

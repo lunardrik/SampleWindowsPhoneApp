@@ -217,7 +217,7 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Temp\phonesm-1.5.3-beta\Libraries\SM.Media.MediaPlayer.WP81\SM.Media.MediaPlayer.WP81.csproj">
+    <ProjectReference Include="E:\Temp\phonesm-1.5.3-beta\Libraries\SM.Media.MediaPlayer.WP81\SM.Media.MediaPlayer.WP81.csproj">
       <Project>{0e64c570-7e84-45e2-a2ac-75ae3c529ff2}</Project>
       <Name>SM.Media.MediaPlayer.WP81</Name>
     </ProjectReference>

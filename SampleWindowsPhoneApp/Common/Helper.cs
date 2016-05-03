@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Graphics.Display;
+using Windows.UI.Xaml;
 using VOHRadio.Data;
 using Windows.UI.Xaml.Data;
 
@@ -258,6 +260,24 @@ namespace VOHRadio.Common
                 default:
                     return 0;
             }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ScaleConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            var resolutionScale = (int)DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel / 100.0;
+            var baseValue = int.Parse(parameter as string);
+            var scaledValue = baseValue*10;//baseValue * resolutionScale;
+            if (targetType == typeof(GridLength))
+                return new GridLength(scaledValue);
+            return scaledValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
